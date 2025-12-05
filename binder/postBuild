@@ -1,13 +1,5 @@
 #!/bin/bash
 set -ex
 
-# Build WebIO Jupyter extension
+# Build WebIO for Jupyter integration
 julia -e 'using Pkg; Pkg.build("WebIO")'
-
-# Enable WebIO extension for Jupyter (if using classic notebook)
-jupyter nbextension install --sys-prefix --py webio_jupyter_extension
-jupyter nbextension enable --sys-prefix --py webio_jupyter_extension
-
-# Enable for JupyterLab (requires rebuilding)
-jupyter labextension install @webio/jupyter-lab-provider --no-build || true
-jupyter lab build --dev-build=False --minimize=True || true
