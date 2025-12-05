@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "=== Binder postBuild: installing WebIO Python extension ==="
+python3 -m pip install --upgrade webio_jupyter_extension
+
+echo "=== Enabling Jupyter extension (best-effort) ==="
+python3 -m jupyter nbextension install --py webio_jupyter_extension --sys-prefix || true
+python3 -m jupyter nbextension enable --py webio_jupyter_extension --sys-prefix || true
+python3 -m jupyter serverextension enable --py webio_jupyter_extension --sys-prefix || true
+
+echo "=== Installing WebIO in Julia via Conda pip interop ==="
+# Use a non-interactive Julia call to add Conda and use pip_interop to install the same
+julia -e 'import Pkg; Pkg.instantiate(); Pkg.add("Conda"); import Conda; Conda.pip_interop(true); Conda.pip("install", "webio_jupyter_extension")'
+
+echo "=== postBuild finished ==="
