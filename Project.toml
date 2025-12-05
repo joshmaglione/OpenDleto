@@ -1,2 +1,6 @@
 [compat]
 julia = "1.12"
+
+[deps]
+Arpack
+PlotlyJS
