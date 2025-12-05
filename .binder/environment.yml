@@ -1,0 +1,10 @@
+name: opendleto-binder
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - jupyterlab
+  - nodejs
+  - pip
+  - pip:
+    - webio_jupyter_extension
