@@ -1,3 +1,0 @@
-#!/bin/bash
-pip install webio-jupyter-extension
-jupyter labextension install @webio/jupyter-lab-provider
