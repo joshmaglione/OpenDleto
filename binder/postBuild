@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+echo "=== Installing Julia packages ==="
+julia -e 'using Pkg; Pkg.activate("."); Pkg.instantiate(); Pkg.build("IJulia"); Pkg.precompile()'
+echo "=== Installing Julia kernel for Jupyter ==="
+julia -e 'using IJulia; IJulia.installkernel("Julia", "--project=@.")'
+echo "=== Binder setup complete ==="
