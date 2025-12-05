@@ -1,7 +1,0 @@
-name: binder
-channels:
-  - conda-forge
-dependencies:
-  - julia>=1.7
-  - nodejs>=14
-  - jupyter-server-proxy

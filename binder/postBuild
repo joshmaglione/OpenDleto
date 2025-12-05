@@ -1,5 +1,0 @@
-#!/bin/bash
-set -ex
-
-# Build WebIO for Jupyter integration
-julia -e 'using Pkg; Pkg.build("WebIO")'
